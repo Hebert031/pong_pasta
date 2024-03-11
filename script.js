@@ -42,7 +42,7 @@ const player = {
   y: canvas.height / 2 - 50,
   width: 15,
   height: 100,
-  dy: 20,
+  dy: 30,
   score: 0
 };
 
