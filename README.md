@@ -32,7 +32,7 @@ Se desejar contribuir com este projeto, você pode seguir os passos abaixo:
 
 Créditos
 
-Este jogo foi desenvolvido por Seu Nome.
+Este jogo foi desenvolvido por Hebert Ribeiro.
 Licença
 
 Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para obter mais detalhes.
