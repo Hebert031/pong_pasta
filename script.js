@@ -22,7 +22,8 @@ const ball = {
     speed: 2,
     dx: 3,
     dy: 3,
-    collision: false // Nova propriedade
+    collision: false, // Nova propriedade
+    delay: false // Nova propriedade
   };
 // Desenha a linha do meio campo
 function drawMidLine() {
@@ -91,27 +92,37 @@ function drawScore() {
 
 // Move a bola
 function moveBall() {
+  if (!ball.delay) {
     ball.x += ball.dx;
     ball.y += ball.dy;
-  
-    if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
-      ball.dy *= -1; // Inverte a direção
-    }
-  
-    if (ball.x + ball.radius > canvas.width) {
-      ball.dx *= -1; // Inverte a direção
-      player.score++; // Adiciona um ponto ao jogador 1
-      player2.dy += player2.speedIncrease; // Aumenta a velocidade do jogador 2
-      goalSound.play();
-    }
-  
-    if (ball.x - ball.radius < 0) {
-      ball.dx *= -1; // Inverte a direção
-      player2.score++; // Adiciona um ponto ao jogador 2
-      player2.dy += player2.speedIncrease; // Aumenta a velocidade do jogador 2
-      goalSound.play();
-    }
   }
+
+  if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
+    ball.dy *= -1; // Inverte a direção
+  }
+
+  if (ball.x + ball.radius > canvas.width && !ball.delay) {
+    ball.dx *= -1; // Inverte a direção
+    player.score++; // Adiciona um ponto ao jogador 1
+    player2.dy += player2.speedIncrease; // Aumenta a velocidade do jogador 2
+    goalSound.play();
+    ball.delay = true; // Inicia o atraso
+    setTimeout(() => {
+      ball.delay = false; // Termina o atraso
+    }, 2000);
+  }
+
+  if (ball.x - ball.radius < 0 && !ball.delay) {
+    ball.dx *= -1; // Inverte a direção
+    player2.score++; // Adiciona um ponto ao jogador 2
+    player2.dy += player2.speedIncrease; // Aumenta a velocidade do jogador 2
+    goalSound.play();
+    ball.delay = true; // Inicia o atraso
+    setTimeout(() => {
+      ball.delay = false; // Termina o atraso
+    }, 2000);
+  }
+}
 
 // Move o jogador
 function movePlayer(e) {
