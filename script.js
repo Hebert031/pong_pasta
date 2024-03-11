@@ -90,9 +90,12 @@ function drawScore() {
   context.fillText('COM: ' + player2.score, canvas.width - 100, 30);
 }
 
+let gameEnded = false; // Nova variável para rastrear se o jogo terminou
+
+
 // Move a bola
 function moveBall() {
-  if (!ball.delay) {
+  if (!ball.delay && !gameEnded) {
     ball.x += ball.dx;
     ball.y += ball.dy;
   }
@@ -104,24 +107,54 @@ function moveBall() {
   if (ball.x + ball.radius > canvas.width && !ball.delay) {
     ball.dx *= -1; // Inverte a direção
     player.score++; // Adiciona um ponto ao jogador 1
-    player2.dy += player2.speedIncrease; // Aumenta a velocidade do jogador 2
-    goalSound.play();
+    goalSound.play(); // Toca o som de gol
     ball.delay = true; // Inicia o atraso
     setTimeout(() => {
       ball.delay = false; // Termina o atraso
-    }, 1500);
+    }, 2000);
   }
 
   if (ball.x - ball.radius < 0 && !ball.delay) {
     ball.dx *= -1; // Inverte a direção
     player2.score++; // Adiciona um ponto ao jogador 2
-    player2.dy += player2.speedIncrease; // Aumenta a velocidade do jogador 2
-    goalSound.play();
+    goalSound.play(); // Toca o som de gol
     ball.delay = true; // Inicia o atraso
     setTimeout(() => {
       ball.delay = false; // Termina o atraso
-    }, 1500);
+    }, 2000);
+    if (player.score >= 7) {
+      alert('Você ganhou!');
+      resetGame(); // Reinicia o jogo
+    } else if (player2.score >= 7) {
+      alert('O computador ganhou!');
+      resetGame(); // Reinicia o jogo
+    }
   }
+
+  // Verifica se algum dos jogadores atingiu 10 pontos
+  if (player.score >= 7 && !gameEnded) {
+    alert('Você ganhou!');
+    gameEnded = true; // Marca o jogo como terminado
+    resetGame(); // Reinicia o jogo
+  } else if (player2.score >= 7 && !gameEnded) {
+    alert('O computador ganhou!');
+    gameEnded = true; // Marca o jogo como terminado
+    resetGame(); // Reinicia o jogo
+  }
+}
+
+// Função para reiniciar o jogo
+function resetGame() {
+  ball.x = canvas.width / 2;
+  ball.y = canvas.height / 2;
+  ball.dx = 3;
+  ball.dy = 3;
+  ball.delay = false;
+
+  player.score = 0;
+  player2.score = 0;
+
+  gameEnded = false; // Reinicia a variável gameEnded
 }
 
 // Move o jogador
