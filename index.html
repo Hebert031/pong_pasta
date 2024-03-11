@@ -22,7 +22,10 @@
         .menu {
           margin: 50px auto 0; /* Adiciona uma margem superior de 50px e centraliza horizontalmente */
           text-align: center;
-          box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+          box-shadow: 0px 10px 30px rgba(0,0,0,0.5); /* Adiciona uma sombra de caixa mais pronunciada para criar um efeito de profundidade */
+          border: none; /* Remove a borda */
+          background-color: #f4f4f4; /* Muda a cor de fundo para um cinza claro */
+          color: #333; /* Muda a cor do texto para um cinza escuro */
           padding: 20px;
           border-radius: 10px;
           background-color: white;
@@ -34,26 +37,32 @@
           padding: 15px 30px;
           text-decoration: none;
           border-radius: 5px; /* Adiciona bordas arredondadas */
-          transition: background-color 0.3s; /* Adiciona uma transição suave ao mudar a cor de fundo */
+          transition: background-color 0.3s, transform 0.3s; /* Adiciona uma transição suave ao mudar a cor de fundo e transformar */
 }
+
 
         .menu a:hover {
           background-color: #0056b3; /* Muda a cor de fundo quando o mouse passa por cima */
+          transform: scale(3.1); /* Aumenta o tamanho do botão em 10% quando o mouse passa por cima */
+          
 }
-      .ad-container {
-        display: flex;
-        justify-content: space-around;
-        margin: 20px auto;
-        width: 80%;
-      }
-      .ad-space {
-        width: 560px;
-        height: 315px;
-        background-color: #f4f4f4;
-        box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-        border-radius: 10px;
-        margin-top: 80px;
-      }
+        .ad-container {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap; /* Permite que os anúncios se movam para a próxima linha se não houver espaço suficiente na linha atual */
+          margin: 20px auto;
+          width: 80%;
+}
+
+        .ad-space {
+          flex: 1 0 200px; /* Faz com que os anúncios ocupem todo o espaço disponível, mas não menos que 200px */
+          max-width: 560px; /* Define a largura máxima dos anúncios para 560px */
+          height: 315px;
+          background-color: #f4f4f4;
+          box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+          border-radius: 10px;
+          margin: 10px; /* Adiciona uma margem para dar um pouco de espaço entre os anúncios */
+}
       footer {
         text-align: center;
         padding: 20px;
