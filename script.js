@@ -109,7 +109,7 @@ function moveBall() {
     ball.delay = true; // Inicia o atraso
     setTimeout(() => {
       ball.delay = false; // Termina o atraso
-    }, 2000);
+    }, 1500);
   }
 
   if (ball.x - ball.radius < 0 && !ball.delay) {
@@ -120,7 +120,7 @@ function moveBall() {
     ball.delay = true; // Inicia o atraso
     setTimeout(() => {
       ball.delay = false; // Termina o atraso
-    }, 2000);
+    }, 1500);
   }
 }
 
