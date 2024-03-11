@@ -16,15 +16,25 @@ function drawBackground() {
 
 // Cria a bola
 const ball = {
-    x: canvas.width / 2,
-    y: canvas.height / 2,
-    radius: 30,
-    speed: 2,
-    dx: 3,
-    dy: 3,
-    collision: false, // Nova propriedade
-    delay: false // Nova propriedade
-  };
+  x: canvas.width / 2,
+  y: canvas.height / 2,
+  radius: 30,
+  speed: 2,
+  dx: 0, // Inicialmente, a bola não se move
+  dy: 0, // Inicialmente, a bola não se move
+  collision: false, // Nova propriedade
+  delay: false // Nova propriedade
+};
+
+// Função para iniciar o movimento da bola
+function startBallMovement() {
+  ball.dx = 3;
+  ball.dy = 3;
+}
+
+// Inicia o movimento da bola após 5 segundos
+setTimeout(startBallMovement, 1500);
+
 // Desenha a linha do meio campo
 function drawMidLine() {
     context.beginPath();
