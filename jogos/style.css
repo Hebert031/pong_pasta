@@ -20,3 +20,22 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
   }
+
+  #voltar {
+    position: fixed;
+    bottom: 90px; /* Ajuste conforme necessário para posicionar acima do rodapé */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#voltar:hover {
+    background-color: #0056b3;
+}

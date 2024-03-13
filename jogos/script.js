@@ -11,15 +11,19 @@ window.onload = function() {
   });
 };
 
+document.getElementById('voltar').addEventListener('click', function() {
+  // Código para voltar vai aqui
+  window.location.href = 'index.html'; // Substitua 'index.html' pela página para a qual você deseja voltar
+});
 
 function startGame() {
 const canvas = document.getElementById('pong');
 const context = canvas.getContext('2d');
-const beepSound = new Audio('midia/pong-beep.mp3');
+const beepSound = new Audio('../midia/pong-beep.mp3');
 const collisions = [];
 const ballImage = new Image();
-const goalSound = new Audio('midia/goal.wav');
-ballImage.src = 'midia/football.png';
+const goalSound = new Audio('../midia/goal.wav');
+ballImage.src = '../midia/football.png';
 
 
 
