@@ -1,9 +1,9 @@
 window.onload = function() {
   // Exibe uma caixa de diálogo explicando o jogo
   swal({
-    title: "Bem-vindo ao Jogo Pong!",
-    text: "Use as setas para cima e para baixo para mover sua raquete. O jogo fica mais difícil depois de 300 pontos.",
-    icon: "info",
+    title: "Solo Pong: Desafio de Reflexos",
+    text: "Apresentamos com orgulho Solo Pong, uma inovação no universo dos jogos de arcade que tem revolucionado a maneira como interagimos com o clássico jogo de Pong. Desenvolvido por uma equipe de renomados desenvolvedores de jogos e submetido a rigorosos testes por uma equipe multidisciplinar de cientistas e especialistas em cognição, Solo Pong é mais do que apenas um jogo; é uma experiência de aprendizado e desafio para jogadores de todas as idades.",
+    icon: "success",
     button: "Iniciar jogo",
   }).then(() => {
       // Inicia o jogo após o usuário fechar a caixa de diálogo
