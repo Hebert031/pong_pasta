@@ -3,14 +3,34 @@ window.onload = init;
 
 function init() {
     console.log('init chamado');
-    // Exibe uma caixa de diálogo explicando o jogo
-    swal({
-      title: "Bem-vindo ao Jogo Duck Dash !",
-      text: "Duck Dash é muito mais do que um simples jogo de tiro; é uma experiência de entretenimento cuidadosamente projetada e refinada por uma equipe de especialistas em jogos e cientistas da natureza. Desenvolvido com base em extensas pesquisas e testes rigorosos, Duck Dash oferece uma jornada emocionante pela natureza selvagem, desafiando os jogadores a aprimorarem suas habilidades de pontaria e reflexos. Clique no pato para ganhar pontos. O jogo fica mais difícil depois de 300 pontos.",
-      icon: "success",
-      button: "Iniciar jogo",
-    });
-
+// Exibe uma caixa de diálogo explicando o jogo
+swal({
+    title: "Bem-vindo ao Jogo Duck Dash !",
+    text: "Duck Dash é muito mais do que um simples jogo de tiro; é uma experiência de entretenimento cuidadosamente projetada e refinada por uma equipe de especialistas em jogos e cientistas da natureza. Desenvolvido com base em extensas pesquisas e testes rigorosos, Duck Dash oferece uma jornada emocionante pela natureza selvagem, desafiando os jogadores a aprimorarem suas habilidades de pontaria e reflexos. Clique no pato para ganhar pontos. O jogo fica mais difícil depois de 300 pontos.",
+    icon: "success",
+    button: "Iniciar jogo",
+  }).then(function() {
+    // Inicia o cronômetro quando o usuário clicar em "OK"
+    var segundos = 0;
+    var minutos = 0;
+    var horas = 0;
+  
+    var cronometroElement = document.getElementById('cronometro');
+  
+    setInterval(function() {
+      segundos++;
+      if (segundos == 60) {
+        minutos++;
+        segundos = 0;
+      }
+      if (minutos == 60) {
+        horas++;
+        minutos = 0;
+      }
+      cronometroElement.textContent = (horas < 10 ? '0' + horas : horas) + ':' + (minutos < 10 ? '0' + minutos : minutos) + ':' + (segundos < 10 ? '0' + segundos : segundos);
+    }, 1000);
+  });
+        
     // Obtém uma referência para o pato
     var duck = document.getElementById('duck');
     // Obtém o tamanho do pato
@@ -27,7 +47,7 @@ function init() {
     setInterval(function() {
         duck.style.top = Math.random() * (window.innerHeight - duckHeight) + 'px';
         duck.style.left = Math.random() * (window.innerWidth - duckWidth) + 'px';
-    }, 1800);
+    }, 900);
 
     // Adiciona um evento de clique ao pato
     duck.addEventListener('click', function(event) {
@@ -43,17 +63,19 @@ function init() {
         scoreElement.textContent = score;
 
 // Se a pontuação for um múltiplo de 50, mostra uma mensagem e toca um beep
-if (score % 4 === 0) {
+if (score % 10 === 0) {
     // Cria um novo elemento para a mensagem
 var message = document.createElement('div');
 message.style.position = 'fixed';
+message.textContent = 'Você Não me pega!!!!';
 message.style.top = '50%';
 message.style.width = '100%';
 message.style.textAlign = 'center';
 message.style.backgroundColor = 'yellow';
+message.style.color = 'black'; // Adiciona esta linha para mudar a cor do texto para preto
 message.style.position = 'fixed';
-message.style.top = '80%';
-message.style.left = '80%';
+message.style.top = '20%';
+message.style.left = '50%';
 message.style.transform = 'translate(-50%, -50%)';
 message.style.width = '100px'; // Ajuste para o tamanho desejado
 message.style.height = '100px'; // Deve ser igual à largura para um quadrado
