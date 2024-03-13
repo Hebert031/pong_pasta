@@ -39,9 +39,9 @@ footer {
 #backButton {
     position: fixed;
     bottom: 20px;
-    left: 50%;
+    right: 409px;
     transform: translateX(-50%);
-    padding: 10px 20px;
+    padding: 5px 20px;
     font-size: 20px;
     background-color: #008CBA; /* Azul */
     color: white;
@@ -51,7 +51,7 @@ footer {
 }
 
 #backButton:hover {
-    background-color: #007B9A; /* Azul escuro */
+    background-color: #00485a; /* Azul escuro */
 }
 
 #cronometro {
