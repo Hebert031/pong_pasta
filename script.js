@@ -1,3 +1,18 @@
+window.onload = function() {
+  // Exibe uma caixa de diálogo explicando o jogo
+  swal({
+    title: "Bem-vindo ao Jogo Pong!",
+    text: "Use as setas para cima e para baixo para mover sua raquete. O jogo fica mais difícil depois de 300 pontos.",
+    icon: "info",
+    button: "Iniciar jogo",
+  }).then(() => {
+      // Inicia o jogo após o usuário fechar a caixa de diálogo
+      startGame();
+  });
+};
+
+
+function startGame() {
 const canvas = document.getElementById('pong');
 const context = canvas.getContext('2d');
 const beepSound = new Audio('midia/pong-beep.mp3');
@@ -260,3 +275,4 @@ function update() {
 window.addEventListener('keydown', movePlayer);
 
 update();
+}
