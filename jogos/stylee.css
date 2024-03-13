@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background: #000;
+    overflow: hidden;
+}
+
+#emulator {
+    width: 800px;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px black;
+    background: black;
+    position: relative;
+    overflow: hidden;
+}
+
+#emulator:before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    bottom: -50px;
+    left: -50px;
+    right: -50px;
+    background: inherit;
+    z-index: -1;
+    border-radius: 50%;
+}
