@@ -63,11 +63,10 @@ swal({
         scoreElement.textContent = score;
 
 // Se a pontuação for um múltiplo de 50, mostra uma mensagem e toca um beep
-if (score % 10 === 0) {
+if (score % 5 === 0) {
     // Cria um novo elemento para a mensagem
 var message = document.createElement('div');
 message.style.position = 'fixed';
-message.textContent = 'Você Não me pega!!!!';
 message.style.top = '50%';
 message.style.width = '100%';
 message.style.textAlign = 'center';
@@ -77,24 +76,40 @@ message.style.position = 'fixed';
 message.style.top = '20%';
 message.style.left = '50%';
 message.style.transform = 'translate(-50%, -50%)';
-message.style.width = '100px'; // Ajuste para o tamanho desejado
-message.style.height = '100px'; // Deve ser igual à largura para um quadrado
+
 
 
 // Cria um novo elemento de imagem para o GIF
 var gif = document.createElement('img');
 gif.src = '../midia/duck3.gif';
+// Define o tamanho do GIF para um valor aleatório entre 50px e 150px
+var tamanho = Math.random() * 100 + 50;
+gif.style.width = tamanho + 'px';
+gif.style.height = tamanho + 'px';
 
-// Adiciona o GIF ao div
-message.appendChild(gif);
+// Posiciona o GIF em uma posição aleatória na tela
+gif.style.position = 'fixed';
+gif.style.top = Math.random() * (window.innerHeight - tamanho) + 'px';
+gif.style.left = Math.random() * (window.innerWidth - tamanho) + 'px';
 
-// Adiciona o div ao corpo do documento
-document.body.appendChild(message);
+// Garante que o GIF seja carregado antes de adicioná-lo ao div
+gif.onload = function() {
+    // Posiciona o GIF em uma posição aleatória na tela
+    gif.style.position = 'fixed';
+    gif.style.top = Math.max(0, Math.random() * (window.innerHeight - gif.offsetHeight)) + 'px';
+    gif.style.left = Math.max(0, Math.random() * (window.innerWidth - gif.offsetWidth)) + 'px';
 
-// Remove a mensagem após 30 segundos
-setTimeout(function() {
-    document.body.removeChild(message);
-}, 1500);
+    // Adiciona o GIF ao div
+    message.appendChild(gif);
+
+    // Adiciona o div ao corpo do documento
+    document.body.appendChild(message);
+
+    // Remove a mensagem após 30 segundos
+    setTimeout(function() {
+        document.body.removeChild(message);
+    }, 1500);
+}
 }
 
         // Verifica se a pontuação é 300
