@@ -17,15 +17,21 @@ function init() {
         duck.style.left = Math.random() * window.innerWidth + 'px';
     }, 1000);
 
-    // Adiciona um evento de clique ao pato
-    duck.addEventListener('click', function(event) {
-        // Impede que o evento de clique se propague para a área de jogo
-        event.stopPropagation();
+// Adiciona um evento de clique ao pato
+duck.addEventListener('click', function(event) {
+    // Impede que o evento de clique se propague para a área de jogo
+    event.stopPropagation();
 
-        // Incrementa a pontuação
-        score++;
+    // Incrementa a pontuação
+    score++;
 
-        // Atualiza a pontuação na tela
-        scoreElement.textContent = 'Pontuação: ' + score;
-    });
+    // Atualiza a pontuação na tela
+    scoreElement.textContent = 'Pontuação: ' + score;
+
+    // Verifica se a pontuação é 300
+    if (score >= 300) {
+        // Se for, remove o evento de clique do pato
+        duck.removeEventListener('click', arguments.callee);
+    }
+});
 }
